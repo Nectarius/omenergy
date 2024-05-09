@@ -9,6 +9,9 @@ import java.util.*
 @RestController
 class AuthController {
 
+    /**
+     * ...
+     */
     @GetMapping("/user")
     fun user(@AuthenticationPrincipal principal: OAuth2User): Map<String, Any?> {
         return Collections.singletonMap("name", principal.getAttribute("name"))
