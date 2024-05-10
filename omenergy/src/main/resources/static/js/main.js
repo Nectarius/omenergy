@@ -74,6 +74,21 @@ jQuery(function($) {
 			scrollSpeed: 400,
 			filter: ':not(.btn)'
 		});
+
+			$.get("/user", function(data) {
+                            if(data !== undefined && data.name !== undefined){
+
+
+                                $("#sing_up_control").html(data.name)
+
+                               $("#user").html(data.name);
+                                 $(".authenticated").show()
+                            } else {
+                              $("#sing_up_control").html("Sign Up")
+                              $(".unauthenticated").hide()
+                            }
+
+                        });
 	});
 	// Window Scroll
 	function onScroll() {
@@ -156,6 +171,30 @@ jQuery(function($) {
 		// the bottom margin of the modal
 		if (offset < bottomMargin) offset = bottomMargin;
 		$dialog.css("margin-top", offset);
+		// -- oauth2
+
+        		$.ajaxSetup({
+          beforeSend : function(xhr, settings) {
+            if (settings.type == 'POST' || settings.type == 'PUT'
+                || settings.type == 'DELETE') {
+              if (!(/^http:.*/.test(settings.url) || /^https:.*/
+                .test(settings.url))) {
+                // Only send the token to relative URLs i.e. locally.
+                xhr.setRequestHeader("X-XSRF-TOKEN",
+                  Cookies.get('XSRF-TOKEN'));
+              }
+            }
+          }
+        });
+        		var logout = function() {
+            $.post("/logout", function() {
+                $("#user").html('');
+                $(".unauthenticated").show();
+                $(".authenticated").hide();
+            })
+            return true;
+        }
+        // --
 	}
 
 	$('.modal').on('show.bs.modal', centerModal);
