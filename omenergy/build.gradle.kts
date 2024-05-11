@@ -34,6 +34,7 @@ dependencies {
     implementation("org.webjars:webjars-locator-core")
     implementation("org.webjars.npm:htmx.org:1.9.12")
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0")
+
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("io.rest-assured:rest-assured")

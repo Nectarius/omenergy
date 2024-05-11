@@ -40,13 +40,13 @@ class OmenergyApplication  {
                 authz
                     .anyRequest().authenticated()
             }.oauth2Login(withDefaults()).logout(withDefaults()).build()
-           
+
 
     }
 
 
 
-    @Bean
+ //   @Bean
     fun oauth2UserService(rest: WebClient): OAuth2UserService<OAuth2UserRequest, OAuth2User> {
         val delegate = DefaultOAuth2UserService()
         return OAuth2UserService<OAuth2UserRequest, OAuth2User> { request: OAuth2UserRequest ->
@@ -85,7 +85,7 @@ class OmenergyApplication  {
 
     @Bean
     fun webSecurityCustomizer(): WebSecurityCustomizer {
-        return WebSecurityCustomizer { web: WebSecurity -> web.ignoring().requestMatchers("/" , "/css/**",  "/js/**", "/images/**", "/fonts/**", "/error", "/webjars/**") }
+        return WebSecurityCustomizer { web: WebSecurity -> web.ignoring().requestMatchers("/" , "/css/**",  "/js/**", "/video/**", "/images/**", "/fonts/**", "/error", "/webjars/**", "/v3/api-docs/**", "/configuration/ui", "/swagger-ui/**", "/swagger-resources/**", "/configuration/security") }
     }
 }
 

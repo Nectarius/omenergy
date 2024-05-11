@@ -1,4 +1,4 @@
-package io.omenergy.omenergy
+package io.omenergy.omenergy.controller
 
 import jakarta.servlet.http.HttpServletRequest
 import org.springframework.security.core.annotation.AuthenticationPrincipal
