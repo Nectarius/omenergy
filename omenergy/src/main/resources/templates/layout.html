@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
 	<meta charset="UTF-8">
@@ -16,6 +16,9 @@
 	<link rel="icon" type="image/png" href="images/favicons/favicon-16x16.png" sizes="16x16">
 	<link rel="manifest" href="images/favicons/manifest.json">
 	<link rel="shortcut icon" href="images/favicons/favicon.ico">
+
+
+
 	<meta name="msapplication-TileColor" content="#00a8ff">
 	<meta name="msapplication-config" content="images/favicons/browserconfig.xml">
 	<meta name="theme-color" content="#ffffff">
@@ -88,31 +91,13 @@
 				<h4 class="light muted">[[#{video.commentary}]]</h4>
 			</div>
 			<div class="row services">
-				<div class="col-md-4">
+				<div class="col-md-4" th:each="service: ${services}">
 					<div class="service">
 						<div class="icon-holder">
-							<img src="images/icons/heart-blue.png" alt="" class="icon">
+							<img th:src="${service.image}" alt="" class="icon">
 						</div>
-						<h4 class="heading">Cardio Training</h4>
-						<p class="description">A elementum ligula lacus ac quam ultrices a scelerisque praesent vel suspendisse scelerisque a aenean hac montes.</p>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="service">
-						<div class="icon-holder">
-							<img src="images/icons/guru-blue.png" alt="" class="icon">
-						</div>
-						<h4 class="heading">Yoga Pilates</h4>
-						<p class="description">A elementum ligula lacus ac quam ultrices a scelerisque praesent vel suspendisse scelerisque a aenean hac montes.</p>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="service">
-						<div class="icon-holder">
-							<img src="images/icons/weight-blue.png" alt="" class="icon">
-						</div>
-						<h4 class="heading">Power Training</h4>
-						<p class="description">A elementum ligula lacus ac quam ultrices a scelerisque praesent vel suspendisse scelerisque a aenean hac montes.</p>
+						<h4 class="heading" th:text="${service.header}"></h4>
+						<p class="description" th:text="${service.description}"></p>
 					</div>
 				</div>
 			</div>
