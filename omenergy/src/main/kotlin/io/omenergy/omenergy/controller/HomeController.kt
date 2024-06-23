@@ -21,7 +21,7 @@ class HomeController(val trainingDescriptionService: TrainingDescriptionService,
             //println("user : $userEmail")
         }
 
-        model.addAttribute("services", trainingDescriptionService.data())
+        model.addAttribute("services", trainingDescriptionService.getData())
         model.addAttribute("videos", videoDataService.freeAvailable());
         return "home/index"
     }

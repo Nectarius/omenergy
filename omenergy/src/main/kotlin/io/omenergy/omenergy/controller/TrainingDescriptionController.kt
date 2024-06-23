@@ -3,6 +3,8 @@ package io.omenergy.omenergy.controller
 import io.omenergy.omenergy.entity.TrainingDescriptionData
 import io.omenergy.omenergy.service.TrainingDescriptionService
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
@@ -22,5 +24,11 @@ class TrainingDescriptionController(val trainingDescriptionService: TrainingDesc
      * 				</div>
      */
     @GetMapping("/data")
-    fun data() = trainingDescriptionService.data()
+    fun data() = trainingDescriptionService.getData()
+
+    @PostMapping("/data")
+    fun data(@RequestBody trainingDescriptionData: TrainingDescriptionData) = trainingDescriptionService.save(trainingDescriptionData)
+
+    @PostMapping("/reset-to-default")
+    fun resetToDefaults() = trainingDescriptionService.resetToDefault()
 }

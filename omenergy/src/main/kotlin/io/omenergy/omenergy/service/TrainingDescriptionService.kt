@@ -1,12 +1,13 @@
 package io.omenergy.omenergy.service
 
 import io.omenergy.omenergy.entity.TrainingDescriptionData
+import io.omenergy.omenergy.repository.TrainingDescriptionDataRepository
 import org.springframework.stereotype.Service
 
 @Service
-class TrainingDescriptionService {
+class TrainingDescriptionService(val trainingDescriptionDataRepository: TrainingDescriptionDataRepository) {
 
-    fun data(): List<TrainingDescriptionData> {
+    fun defaultData(): List<TrainingDescriptionData> {
         return listOf(
             TrainingDescriptionData(
                 header = "Cardio Training . Fake data",
@@ -24,5 +25,17 @@ class TrainingDescriptionService {
                 image = "images/icons/weight-blue.png"
             )
         )
+    }
+
+    fun getData() : List<TrainingDescriptionData> {
+        return  trainingDescriptionDataRepository.findAll()
+    }
+
+    fun resetToDefault() : Boolean {
+        return  trainingDescriptionDataRepository.save(defaultData())
+    }
+
+    fun save(trainingDescriptionData: TrainingDescriptionData) : Boolean {
+      return  trainingDescriptionDataRepository.save(trainingDescriptionData)
     }
 }
