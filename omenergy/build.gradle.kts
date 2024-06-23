@@ -6,6 +6,7 @@ plugins {
     id("io.spring.dependency-management") version "1.1.4"
     id("com.palantir.docker") version "0.36.0"
 
+    id("org.jetbrains.kotlin.plugin.serialization") version "2.0.20-Beta1"
     kotlin("jvm") version "1.9.23"
     kotlin("plugin.spring") version "1.9.23"
 }
@@ -38,6 +39,8 @@ dependencies {
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0")
 
     implementation("org.mongodb:mongodb-driver-kotlin-sync:5.1.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.5.1")
+    implementation("org.mongodb:bson-kotlinx:5.1.0")
 
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     testImplementation("org.springframework.boot:spring-boot-starter-test")

@@ -51,14 +51,6 @@ class OmenergyApplication(@Value("\${mongo-url}")
 
 
     @Bean
-    fun database() =
-        mongoClient().getDatabase("taffeite")
-
-
-
-
-
-    @Bean
     @Throws(Exception::class)
     fun filterChain(http: HttpSecurity): SecurityFilterChain {
         return  http
