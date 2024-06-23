@@ -29,6 +29,10 @@ import org.springframework.security.oauth2.core.OAuth2Error
 import org.springframework.security.oauth2.core.user.OAuth2User
 import org.springframework.security.web.SecurityFilterChain
 import org.springframework.web.reactive.function.client.WebClient
+import org.springframework.web.servlet.config.annotation.CorsRegistry
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
+
+
 
 
 @SpringBootApplication
@@ -92,6 +96,14 @@ class OmenergyApplication(@Value("\${mongo-url}")
         }
     }
 
+    @Bean
+    fun corsConfigurer(): WebMvcConfigurer {
+        return object : WebMvcConfigurer {
+            override fun addCorsMappings(registry: CorsRegistry) {
+                registry.addMapping("/content/**").allowedOrigins("http://localhost:8081")
+            }
+        }
+    }
 
     @Bean
     fun rest(clients: ClientRegistrationRepository?, authz: OAuth2AuthorizedClientRepository?): WebClient {
@@ -103,7 +115,7 @@ class OmenergyApplication(@Value("\${mongo-url}")
 
     @Bean
     fun webSecurityCustomizer(): WebSecurityCustomizer {
-        return WebSecurityCustomizer { web: WebSecurity -> web.ignoring().requestMatchers("/" , "/css/**",  "/js/**", "/training-description/**", "/video/**", "/images/**", "/fonts/**", "/error", "/webjars/**", "/v3/api-docs/**", "/configuration/ui", "/swagger-ui/**", "/swagger-resources/**", "/configuration/security") }
+        return WebSecurityCustomizer { web: WebSecurity -> web.ignoring().requestMatchers("/" , "/css/**",  "/js/**", "/content/**", "/video/**", "/images/**", "/fonts/**", "/error", "/webjars/**", "/v3/api-docs/**", "/configuration/ui", "/swagger-ui/**", "/swagger-resources/**", "/configuration/security") }
     }
 }
 

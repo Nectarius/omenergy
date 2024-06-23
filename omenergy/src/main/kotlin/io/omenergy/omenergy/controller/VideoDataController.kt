@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController
 
 
 @RestController
-@RequestMapping("/video")
+@RequestMapping("/content/video")
 class VideoDataController(val videoDataService: VideoDataService) {
 
     @GetMapping("/free-available")
