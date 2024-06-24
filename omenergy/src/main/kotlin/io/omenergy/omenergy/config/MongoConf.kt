@@ -3,6 +3,7 @@ package io.omenergy.omenergy.config
 import com.mongodb.client.model.Indexes
 import com.mongodb.kotlin.client.MongoClient
 import com.mongodb.kotlin.client.MongoCollection
+import io.omenergy.omenergy.entity.InfoData
 import io.omenergy.omenergy.entity.TrainingDescriptionData
 import jakarta.annotation.PostConstruct
 import jakarta.annotation.PreDestroy
@@ -20,6 +21,11 @@ class MongoConf(val mongoClient: MongoClient) {
         return collection
     }
 
+    @Bean
+    fun infoDataCollection() : MongoCollection<InfoData> {
+        val  collection = mongoClient.getDatabase("taffeite").getCollection<InfoData>("info-data")
+        return collection
+    }
 
 
     @PostConstruct

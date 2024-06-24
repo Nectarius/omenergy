@@ -9,6 +9,9 @@
         <li class="nav-item">
           <router-link to="/add" class="nav-link">Добавить курс</router-link>
         </li>
+        <li class="nav-item">
+                  <router-link to="/info-data" class="nav-link">О себе</router-link>
+        </li>
       </div>
     </nav>
 

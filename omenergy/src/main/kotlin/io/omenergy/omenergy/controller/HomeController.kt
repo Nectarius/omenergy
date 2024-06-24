@@ -1,5 +1,6 @@
 package io.omenergy.omenergy.controller
 
+import io.omenergy.omenergy.repository.InfoDataRepository
 import io.omenergy.omenergy.service.TrainingDescriptionService
 import io.omenergy.omenergy.service.VideoDataService
 import org.springframework.security.core.context.SecurityContextHolder
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping
 
 
 @Controller
-class HomeController(val trainingDescriptionService: TrainingDescriptionService, val videoDataService: VideoDataService) {
+class HomeController(val trainingDescriptionService: TrainingDescriptionService, val videoDataService: VideoDataService, val infoDataRepository: InfoDataRepository) {
 
     @GetMapping("/")
     fun index(model: Model): String{
@@ -20,9 +21,9 @@ class HomeController(val trainingDescriptionService: TrainingDescriptionService,
                 // println("user : $principal")
             //println("user : $userEmail")
         }
-
+        model.addAttribute("infoData", infoDataRepository.findFirst())
         model.addAttribute("services", trainingDescriptionService.getData())
-        model.addAttribute("videos", videoDataService.freeAvailable());
+        model.addAttribute("videos", videoDataService.freeAvailable())
         return "home/index"
     }
 

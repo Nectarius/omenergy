@@ -13,6 +13,11 @@ const routes =  [
     component: () => import("./components/TrainingDescription")
   },
   {
+      path: "/info-data",
+      name: "info-data-details",
+      component: () => import("./components/InfoData")
+    },
+  {
     path: "/add",
     name: "add",
     component: () => import("./components/AddTrainingDescription")

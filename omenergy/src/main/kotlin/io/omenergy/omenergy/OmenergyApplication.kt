@@ -33,8 +33,6 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
 
 
-
-
 @SpringBootApplication
 @EnableAutoConfiguration(exclude= [MongoAutoConfiguration::class] )
 class OmenergyApplication(@Value("\${mongo-url}")
@@ -100,7 +98,7 @@ class OmenergyApplication(@Value("\${mongo-url}")
     fun corsConfigurer(): WebMvcConfigurer {
         return object : WebMvcConfigurer {
             override fun addCorsMappings(registry: CorsRegistry) {
-                registry.addMapping("/content/**").allowedOrigins("http://localhost:8081")
+                registry.addMapping("/content/**").allowedOrigins("http://localhost:8081", "http://156.67.30.28:8081")
             }
         }
     }
