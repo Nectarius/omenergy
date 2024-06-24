@@ -19,7 +19,7 @@ class TrainingDescriptionDataService {
   }
 
   delete(id) {
-    return http.delete(`/training-description/${id}`);
+    return http.post("/training-description/delete/" + id);
   }
 
   deleteAll() {

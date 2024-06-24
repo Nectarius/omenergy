@@ -55,5 +55,8 @@ class TrainingDescriptionService(val trainingDescriptionDataRepository: Training
     )
 
     fun getDataById(id: String) = mapToDto(trainingDescriptionDataRepository.findOne(id))
+    fun delete(id: String) =
+        trainingDescriptionDataRepository.deleteById(id)
+
 
 }

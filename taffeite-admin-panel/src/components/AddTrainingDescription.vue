@@ -2,13 +2,13 @@
   <div class="submit-form">
     <div v-if="!submitted">
       <div class="form-group">
-        <label for="title">Title</label>
+        <label for="title">Header</label>
         <input
           type="text"
           class="form-control"
           id="title"
           required
-          v-model="tutorial.title"
+          v-model="tutorial.header"
           name="title"
         />
       </div>

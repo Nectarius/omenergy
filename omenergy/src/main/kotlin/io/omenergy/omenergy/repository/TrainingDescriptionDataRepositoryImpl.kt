@@ -27,7 +27,8 @@ class TrainingDescriptionDataRepositoryImpl(mongoClient: MongoClient, val traini
     }
 
     override fun update(trainingDescriptionData: TrainingDescriptionData): Boolean {
-        return  trainingDescriptionCollection.findOneAndUpdate(Filters.eq(TrainingDescriptionData::header.name, trainingDescriptionData.header), Updates.combine(
+        return  trainingDescriptionCollection.findOneAndUpdate(Filters.eq("_id", trainingDescriptionData.id), Updates.combine(
+            Updates.set(TrainingDescriptionData::header.name, trainingDescriptionData.header),
             Updates.set(TrainingDescriptionData::description.name, trainingDescriptionData.description), Updates.set(TrainingDescriptionData::image.name, trainingDescriptionData.image)
         )) != null
     }
@@ -40,5 +41,9 @@ class TrainingDescriptionDataRepositoryImpl(mongoClient: MongoClient, val traini
     override fun findOne(id: String): TrainingDescriptionData {
         return trainingDescriptionCollection.find(Filters.eq("_id", ObjectId(id))).first()
     }
+
+    override fun deleteById(id: String) =
+        trainingDescriptionCollection.deleteOne(Filters.eq("_id", ObjectId(id))).deletedCount > 0
+
 
 }

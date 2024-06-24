@@ -29,6 +29,8 @@ class TrainingDescriptionController(val trainingDescriptionService: TrainingDesc
     @GetMapping("/{id}")
     fun dataById(@PathVariable id: String) = trainingDescriptionService.getDataById(id)
 
+    @PostMapping("/delete/{id}")
+    fun delete(@PathVariable id: String) = trainingDescriptionService.delete(id)
 
     @PostMapping("/save")
     fun save(@RequestBody trainingDescriptionData: TrainingDescriptionDto) = trainingDescriptionService.save(trainingDescriptionData)

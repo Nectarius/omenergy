@@ -12,5 +12,6 @@ interface TrainingDescriptionDataRepository {
     fun update(trainingDescriptionData: TrainingDescriptionData): Boolean
     fun findByHeader(header: String): List<TrainingDescriptionData>
     fun findOne(id: String): TrainingDescriptionData
+    fun deleteById(id: String): Boolean
 
 }
