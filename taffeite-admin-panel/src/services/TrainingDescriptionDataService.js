@@ -14,8 +14,8 @@ class TrainingDescriptionDataService {
     return http.post("/training-description/save", data);
   }
 
-  update(id, data) {
-    return http.put(`/training-description/${id}`, data);
+  update(data) {
+    return http.post("/training-description/update", data);
   }
 
   delete(id) {
@@ -26,8 +26,8 @@ class TrainingDescriptionDataService {
     return http.delete(`/training-description`);
   }
 
-  findByTitle(title) {
-    return http.get(`/training-description?title=${title}`);
+  findByHeader(header) {
+    return http.get(`/training-description/by-header?header=${header}`);
   }
 }
 

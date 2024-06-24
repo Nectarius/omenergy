@@ -1,6 +1,10 @@
 package io.omenergy.omenergy.config
 
+import com.mongodb.client.model.Indexes
 import com.mongodb.kotlin.client.MongoClient
+import com.mongodb.kotlin.client.MongoCollection
+import io.omenergy.omenergy.entity.TrainingDescriptionData
+import jakarta.annotation.PostConstruct
 import jakarta.annotation.PreDestroy
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -9,6 +13,19 @@ import org.springframework.context.annotation.Configuration
 @Configuration
 class MongoConf(val mongoClient: MongoClient) {
 
+    @Bean
+    fun trainingDescriptionCollection() : MongoCollection<TrainingDescriptionData> {
+       val  collection = mongoClient.getDatabase("taffeite").getCollection<TrainingDescriptionData>("training-descriptions")
+        collection.createIndex(Indexes.text("header"))
+        return collection
+    }
+
+
+
+    @PostConstruct
+    fun initMongoConf() {
+
+    }
 
     @PreDestroy
     fun shutdown() {

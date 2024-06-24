@@ -8,7 +8,7 @@ const routes =  [
     component: () => import("./components/TrainingDescriptionList")
   },
   {
-    path: "/training-description/:id",
+    path: "/training-descriptions/:id",
     name: "training-description-details",
     component: () => import("./components/TrainingDescription")
   },

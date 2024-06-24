@@ -11,5 +11,5 @@ data class TrainingDescriptionData(
     @Contextual val id: ObjectId? = null,
     val header: String,
     val description: String,
-    val image: String
+    val image: String? = "",
 )

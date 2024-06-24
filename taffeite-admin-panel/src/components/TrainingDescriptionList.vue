@@ -101,7 +101,7 @@ export default {
     },
     
     searchTitle() {
-      TrainingDescriptionDataService.findByTitle(this.title)
+      TrainingDescriptionDataService.findByHeader(this.header)
         .then(response => {
           this.tutorials = response.data;
           this.setActiveTutorial(null);

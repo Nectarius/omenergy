@@ -9,5 +9,8 @@ interface TrainingDescriptionDataRepository {
     fun save(trainingDescription: TrainingDescriptionData) : Boolean
 
     fun save(trainingDescription: List<TrainingDescriptionData>): Boolean
+    fun update(trainingDescriptionData: TrainingDescriptionData): Boolean
+    fun findByHeader(header: String): List<TrainingDescriptionData>
+    fun findOne(id: String): TrainingDescriptionData
 
 }

@@ -84,7 +84,7 @@ export default {
         published: status
       };
 
-      TrainingDescriptionDataService.update(this.currentTutorial.id, data)
+      TrainingDescriptionDataService.update(data)
         .then(response => {
           console.log(response.data);
           this.currentTutorial.published = status;
@@ -96,7 +96,7 @@ export default {
     },
 
     updateTutorial() {
-      TrainingDescriptionDataService.update(this.currentTutorial.id, this.currentTutorial)
+      TrainingDescriptionDataService.update(this.currentTutorial)
         .then(response => {
           console.log(response.data);
           this.message = 'The tutorial was updated successfully!';
@@ -119,7 +119,7 @@ export default {
   },
   mounted() {
     this.message = '';
-    this.getTutorial(this.$route.params.id);
+    this.getTrainingDescription(this.$route.params.id);
   }
 };
 </script>
