@@ -15,6 +15,6 @@ fun TrainingDescriptionDto.toEntity() = TrainingDescriptionData(
     id = if (this.id != null) ObjectId(this.id) else null,
     header = this.header,
     description = this.description,
-    image = this.image?: ""
+    image = if (this.image == "") "images/icons/guru-blue.png" else this.image ?: "images/icons/guru-blue.png"
 )
 

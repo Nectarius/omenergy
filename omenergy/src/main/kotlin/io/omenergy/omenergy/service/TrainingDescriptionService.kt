@@ -51,7 +51,7 @@ class TrainingDescriptionService(val trainingDescriptionDataRepository: Training
         id = data.id.toString(),
         header = data.header,
         description = data.description,
-        image = data.image?: ""
+        image = data.image?: "images/icons/guru-blue.png"
     )
 
     fun getDataById(id: String) = mapToDto(trainingDescriptionDataRepository.findOne(id))
