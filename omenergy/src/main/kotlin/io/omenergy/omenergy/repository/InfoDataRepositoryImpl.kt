@@ -28,8 +28,10 @@ class InfoDataRepositoryImpl(mongoClient: MongoClient, val infoDataCollection: M
         infoDataCollection.deleteMany(Filters.eq(InfoData::tag.name, "info"))
         return infoDataCollection.insertOne(
             InfoData(
-                header = "About yourself",
-                description = "In progress ..."
+                header = "Здравствуйте меня зовут Ольга Молодцова",
+                description = "Хореограф/Тренер и артистка балета. Преподаватель балета и латиноамериканских танцев более 12 лет. Автор и преподаватель курса 'Постройней за 30 дней'. Более 1500 клиентов обучила растяжке, красивой осанке и этикету.",
+                aboutCourses = "О моих занятиях",
+                coursesTitle = "о занятиях"
             )
         ).wasAcknowledged()
     }

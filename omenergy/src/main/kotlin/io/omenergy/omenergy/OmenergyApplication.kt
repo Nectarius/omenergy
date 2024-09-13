@@ -98,7 +98,7 @@ class OmenergyApplication(@Value("\${mongo-url}")
     fun corsConfigurer(): WebMvcConfigurer {
         return object : WebMvcConfigurer {
             override fun addCorsMappings(registry: CorsRegistry) {
-                registry.addMapping("/content/**").allowedOrigins("http://localhost:8081", "http://156.67.30.28:8081")
+                registry.addMapping("/content/**").allowedOrigins("http://localhost:8081", "http://localhost:5173", "http://156.67.30.28:8081", "http://156.67.30.28:5173")
             }
         }
     }

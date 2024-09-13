@@ -6,7 +6,9 @@ import org.bson.types.ObjectId
 data class InfoDataDto(
     val id: String? = null,
     val header: String,
-    val description: String
+    val description: String,
+    val coursesTitle: String,
+    val aboutCourses: String
 )
 
 fun InfoDataDto.toEntity() = TrainingDescriptionData(

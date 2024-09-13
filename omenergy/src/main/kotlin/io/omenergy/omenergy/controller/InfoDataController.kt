@@ -36,7 +36,9 @@ class InfoDataController(val infoDataRepository: InfoDataRepository) {
     fun mapToDto(data: InfoData) = InfoDataDto(
         id = data.id.toString(),
         header = data.header,
-        description = data.description
+        description = data.description,
+        aboutCourses = data.aboutCourses ?: "",
+        coursesTitle = data.coursesTitle ?: ""
     )
 
 }

@@ -11,5 +11,7 @@ data class InfoData(
     @Contextual val id: ObjectId? = null,
     val header: String,
     val description: String,
+    val coursesTitle: String?,
+    val aboutCourses: String?,
     val tag: String? = "info"
 )
