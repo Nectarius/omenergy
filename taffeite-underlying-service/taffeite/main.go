@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/gin-gonic/gin"
 	"html/template"
+	"taffeite.com/taffeite-underlying-service/conf"
 	"taffeite.com/taffeite-underlying-service/dto"
 	"taffeite.com/taffeite-underlying-service/services"
 )
@@ -11,8 +12,10 @@ func main() {
 	// Create a new Gin router
 	router := gin.Default()
 
+	var controllerConf = conf.NewControllerConf()
+
 	// Load the HTML template
-	tmpl, err := template.ParseFiles("resources/template/index.html")
+	tmpl, err := template.ParseFiles(controllerConf.HomePageUrl)
 	if err != nil {
 		panic(err)
 	}
