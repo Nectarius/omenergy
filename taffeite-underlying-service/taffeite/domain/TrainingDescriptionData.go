@@ -1,7 +1,10 @@
 package entity
 
+import "go.mongodb.org/mongo-driver/bson/primitive"
+
 type TrainingDescriptionData struct {
-	header      string
-	description string
-	image       string
+	Id          primitive.ObjectID
+	Header      string
+	Description string
+	Image       string
 }

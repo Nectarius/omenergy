@@ -2,7 +2,9 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
+	"golang.org/x/net/context"
 	"html/template"
+	"taffeite.com/taffeite-underlying-service/access"
 	"taffeite.com/taffeite-underlying-service/conf"
 	"taffeite.com/taffeite-underlying-service/dto"
 	"taffeite.com/taffeite-underlying-service/services"
@@ -19,19 +21,31 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	//http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("./assets"))))
+	var taffeiteModule = access.NewTaffeiteModule()
+
+	// var infoData = services.GetDefaultInfoData()
+	var infoData = taffeiteModule.InfoDataRepository.GetInfoData()
+
+	var infoDataDto = dto.InfoDataDto{
+		Id:           infoData.Id.String(),
+		Description:  infoData.Description,
+		Header:       infoData.Header,
+		AboutCourses: infoData.AboutCourses,
+		CoursesTitle: infoData.CoursesTitle,
+		Tag:          infoData.Tag,
+	}
 
 	// Define a handler function
 	router.GET("/", func(c *gin.Context) {
 		// Create a data structure to pass to the template
-		var infoData = services.GetDefaultInfoData()
+
 		var panelView = dto.PanelView{
 			NavigationInfo: dto.NavigationInfoDto{
 				Intro:          "О нас",
 				AboutTrainings: "О моих занятиях",
 				Pricing:        "Прайсинг",
 			},
-			InfoDataSet: infoData,
+			InfoDataSet: infoDataDto,
 			Services:    services.GetTrainingDescriptions(),
 		}
 		// Render the template with the data
@@ -42,6 +56,10 @@ func main() {
 	})
 
 	router.Static("/assets", "assets")
+
+	defer func(module *access.TaffeiteModule, ctx context.Context) {
+		module.Clear()
+	}(taffeiteModule, context.Background())
 
 	// Start the HTTP server
 	router.Run(":2560")
