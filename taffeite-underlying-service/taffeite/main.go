@@ -41,5 +41,5 @@ func main() {
 	router.Static("/assets", "assets")
 
 	// Start the HTTP server
-	router.Run(":8080")
+	router.Run(":2560")
 }

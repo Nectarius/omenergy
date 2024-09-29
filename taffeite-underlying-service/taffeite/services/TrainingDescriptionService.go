@@ -1,6 +1,8 @@
 package services
 
-import "taffeite.com/taffeite-underlying-service/dto"
+import (
+	"taffeite.com/taffeite-underlying-service/dto"
+)
 
 func GetTrainingDescriptions() []dto.TrainingDescriptionDto {
 

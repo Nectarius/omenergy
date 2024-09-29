@@ -1,6 +1,8 @@
 package services
 
-import "taffeite.com/taffeite-underlying-service/dto"
+import (
+	"taffeite.com/taffeite-underlying-service/dto"
+)
 
 func GetDefaultInfoData() dto.InfoDataDto {
 	var infoData = dto.InfoDataDto{}
