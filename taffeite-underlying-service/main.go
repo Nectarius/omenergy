@@ -24,11 +24,12 @@ func main() {
 		var infoData = services.GetDefaultInfoData()
 		var panelView = dto.PanelView{
 			NavigationInfo: dto.NavigationInfoDto{
-				Intro:          "Ð Ð½Ð°Ñ",
-				AboutTrainings: "Ð\u009E Ð¼Ð¾Ð¸Ñ\u0085 Ð·Ð°Ð½Ñ\u008FÑ\u0082Ð¸Ñ\u008FÑ\u0085",
-				Pricing:        "Ð\u009FÑ\u0080Ð°Ð¹Ñ\u0081Ð¸Ð½Ð³",
+				Intro:          "О нас",
+				AboutTrainings: "О моих занятиях",
+				Pricing:        "Прайсинг",
 			},
 			InfoDataSet: infoData,
+			Services:    services.GetTrainingDescriptions(),
 		}
 		// Render the template with the data
 		err := tmpl.Execute(c.Writer, panelView)
