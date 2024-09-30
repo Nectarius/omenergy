@@ -6,7 +6,6 @@ import (
 	"html/template"
 	"taffeite.com/taffeite-underlying-service/access"
 	"taffeite.com/taffeite-underlying-service/conf"
-	"taffeite.com/taffeite-underlying-service/dto"
 	"taffeite.com/taffeite-underlying-service/services"
 )
 
@@ -24,30 +23,13 @@ func main() {
 	var taffeiteModule = access.NewTaffeiteModule()
 
 	// var infoData = services.GetDefaultInfoData()
-	var infoData = taffeiteModule.InfoDataRepository.GetInfoData()
-
-	var infoDataDto = dto.InfoDataDto{
-		Id:           infoData.Id.String(),
-		Description:  infoData.Description,
-		Header:       infoData.Header,
-		AboutCourses: infoData.AboutCourses,
-		CoursesTitle: infoData.CoursesTitle,
-		Tag:          infoData.Tag,
-	}
+	var infoData = services.ConvertToDto(taffeiteModule.PanelViewRepository.GetPanelViewData())
 
 	// Define a handler function
 	router.GET("/", func(c *gin.Context) {
 		// Create a data structure to pass to the template
 
-		var panelView = dto.PanelView{
-			NavigationInfo: dto.NavigationInfoDto{
-				Intro:          "О нас",
-				AboutTrainings: "О моих занятиях",
-				Pricing:        "Прайсинг",
-			},
-			InfoDataSet: infoDataDto,
-			Services:    services.GetTrainingDescriptions(),
-		}
+		var panelView = infoData
 		// Render the template with the data
 		err := tmpl.Execute(c.Writer, panelView)
 		if err != nil {
