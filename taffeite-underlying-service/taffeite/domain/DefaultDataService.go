@@ -12,7 +12,7 @@ func GetDefaultPanelViewData() PanelViewData {
 	infoData.CoursesTitle = "Зачем Вы здесь ?"
 	return PanelViewData{
 		Id:      primitive.NewObjectID(),
-		Version: 1,
+		Version: 2,
 		NavigationInfo: NavigationInfoData{
 			Intro:          "О нас",
 			AboutTrainings: "О моих занятиях",
@@ -29,6 +29,17 @@ func GetDefaultPanelViewData() PanelViewData {
 			{"Научиться танцевать",
 				"Онлайн-занятия. Эффективные тренировки дома даже для самых ленивых",
 				"assets/images/icons/guru-blue.png"},
+		},
+		Courses: []TrainingCourseData{
+			{"Я сама",
+				"17 практик + 2 занятия без поддержки.",
+				"10000 рублей"},
+			{"Я вместе с Вами",
+				"4 недели с поддержкой, 30 практик + 4 занятия и поддержка кураторов",
+				"30000 рублей"},
+			{"VIP сопровождение",
+				"Личная поддержка, 35 практик , 30 заниятия и обратная связь два месяца",
+				"100000 рублей"},
 		},
 	}
 }

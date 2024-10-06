@@ -13,10 +13,22 @@ func mapDataToDto(source entity.TrainingDescriptionData) dto.TrainingDescription
 	}
 }
 
+func mapCourseDataToDto(source entity.TrainingCourseData) dto.TrainingCourseDto {
+	return dto.TrainingCourseDto{
+		Header:      source.Header,
+		Description: source.Description,
+		Pricing:     source.Pricing,
+	}
+}
+
 func ConvertToDto(data entity.PanelViewData) dto.PanelView {
 	targetCollection := make([]dto.TrainingDescriptionDto, len(data.Services))
 	for i, source := range data.Services {
 		targetCollection[i] = mapDataToDto(source)
+	}
+	courseCollection := make([]dto.TrainingCourseDto, len(data.Courses))
+	for i, source := range data.Courses {
+		courseCollection[i] = mapCourseDataToDto(source)
 	}
 	return dto.PanelView{
 		NavigationInfo: dto.NavigationInfoDto{
@@ -32,5 +44,6 @@ func ConvertToDto(data entity.PanelViewData) dto.PanelView {
 			Tag:          data.Info.Tag,
 		},
 		Services: targetCollection,
+		Courses:  courseCollection,
 	}
 }

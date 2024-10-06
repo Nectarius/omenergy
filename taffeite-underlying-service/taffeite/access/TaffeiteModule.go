@@ -2,7 +2,7 @@ package access
 
 import (
 	"taffeite.com/taffeite-underlying-service/conf"
-	//	entity "taffeite.com/taffeite-underlying-service/domain"
+	//entity "taffeite.com/taffeite-underlying-service/domain"
 
 	"taffeite.com/taffeite-underlying-service/repository"
 )

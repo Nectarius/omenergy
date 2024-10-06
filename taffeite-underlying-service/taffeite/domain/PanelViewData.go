@@ -8,4 +8,5 @@ type PanelViewData struct {
 	Info           InfoData
 	NavigationInfo NavigationInfoData
 	Services       []TrainingDescriptionData
+	Courses        []TrainingCourseData
 }
