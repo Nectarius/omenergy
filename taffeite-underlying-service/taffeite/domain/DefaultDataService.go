@@ -12,7 +12,7 @@ func GetDefaultPanelViewData() PanelViewData {
 	infoData.CoursesTitle = "Зачем Вы здесь ?"
 	return PanelViewData{
 		Id:      primitive.NewObjectID(),
-		Version: 0,
+		Version: 1,
 		NavigationInfo: NavigationInfoData{
 			Intro:          "О нас",
 			AboutTrainings: "О моих занятиях",
@@ -21,24 +21,13 @@ func GetDefaultPanelViewData() PanelViewData {
 		Info: infoData,
 		Services: []TrainingDescriptionData{
 			{"Убрать лишний вес",
-				"A elementum ligula lacus ac quam ultrices a scelerisque praesent vel suspendisse scelerisque a aenean hac montes.",
+				"Сбросить лишний вес, выйти из пищевой зависимости и наладить питание для постоянной энергии",
 				"assets/images/icons/guru-blue.png"},
 			{"Раскрыть женскую сексуальность",
-				"A elementum ligula lacus ac quam ultrices a scelerisque praesent vel suspendisse scelerisque a aenean hac montes.",
+				"Вернуть страсть и взаимоотношения с своим партнером через медитации и практики",
 				"assets/images/icons/guru-blue.png"},
-
 			{"Научиться танцевать",
-				"A elementum ligula lacus ac quam ultrices a scelerisque praesent vel suspendisse scelerisque a aenean hac montes.",
-				"assets/images/icons/guru-blue.png"},
-			{"Эффективные тренировки без спортзала",
-				"A elementum ligula lacus ac quam ultrices a scelerisque praesent vel suspendisse scelerisque a aenean hac montes.",
-				"assets/images/icons/guru-blue.png"},
-			{"Победить депрессию и апатию",
-				"A elementum ligula lacus ac quam ultrices a scelerisque praesent vel suspendisse scelerisque a aenean hac montes.",
-				"assets/images/icons/guru-blue.png"},
-
-			{"Стать богатым, спокойным и знаменитым",
-				"A elementum ligula lacus ac quam ultrices a scelerisque praesent vel suspendisse scelerisque a aenean hac montes.",
+				"Онлайн-занятия. Эффективные тренировки дома даже для самых ленивых",
 				"assets/images/icons/guru-blue.png"},
 		},
 	}

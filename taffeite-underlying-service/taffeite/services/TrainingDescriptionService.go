@@ -8,24 +8,14 @@ func GetTrainingDescriptions() []dto.TrainingDescriptionDto {
 
 	return []dto.TrainingDescriptionDto{
 		{"Убрать лишний вес",
-			"A elementum ligula lacus ac quam ultrices a scelerisque praesent vel suspendisse scelerisque a aenean hac montes.",
+			"Сбросить лишний вес и наладить питание для постоянной энергии",
 			"assets/images/icons/guru-blue.png"},
 		{"Раскрыть женскую сексуальность",
-			"A elementum ligula lacus ac quam ultrices a scelerisque praesent vel suspendisse scelerisque a aenean hac montes.",
+			"Вернуть страсть и взаимоотношения с своим партнером",
 			"assets/images/icons/guru-blue.png"},
 
 		{"Научиться танцевать",
-			"A elementum ligula lacus ac quam ultrices a scelerisque praesent vel suspendisse scelerisque a aenean hac montes.",
-			"assets/images/icons/guru-blue.png"},
-		{"Эффективные тренировки без спортзала",
-			"A elementum ligula lacus ac quam ultrices a scelerisque praesent vel suspendisse scelerisque a aenean hac montes.",
-			"assets/images/icons/guru-blue.png"},
-		{"Победить депрессию и апатию",
-			"A elementum ligula lacus ac quam ultrices a scelerisque praesent vel suspendisse scelerisque a aenean hac montes.",
-			"assets/images/icons/guru-blue.png"},
-
-		{"Стать богатым, спокойным и знаменитым",
-			"A elementum ligula lacus ac quam ultrices a scelerisque praesent vel suspendisse scelerisque a aenean hac montes.",
+			" Онлайн-занятия. Эффективные тренировки дома даже для самых ленивых",
 			"assets/images/icons/guru-blue.png"},
 	}
 }

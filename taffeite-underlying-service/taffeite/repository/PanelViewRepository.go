@@ -1,10 +1,11 @@
 package repository
 
 import (
+	"log"
+
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"golang.org/x/net/context"
-	"log"
 	"taffeite.com/taffeite-underlying-service/conf"
 	entity "taffeite.com/taffeite-underlying-service/domain"
 )
@@ -20,7 +21,7 @@ func NewPanelViewRepository(Conf conf.MongoConf) *PanelViewRepository {
 func (r *PanelViewRepository) GetPanelViewData() entity.PanelViewData {
 	var client = r.Conf.MongoClient
 	collection := client.Database("taffeite").Collection("panel-view-data")
-	var filter = bson.M{"version": 0}
+	var filter = bson.M{"version": 1}
 	result := collection.FindOne(context.Background(), filter)
 
 	var panelView = entity.PanelViewData{}
