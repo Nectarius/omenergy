@@ -1,20 +1,22 @@
 FROM golang:1.21-alpine AS builder
 
-COPY ${PWD} /app
 WORKDIR /app
 
-RUN CGO_ENABLED=0 go build -ldflags '-s -w -extldflags "-static"' -o /app/appbin *.go
+COPY go.mod go.sum ./
 
-FROM alpine:latest
+RUN go mod download
 
-RUN addgroup -S demo && adduser -S demo -G demo
-USER demo
+COPY . .
 
+RUN go build -o main
 
+FROM alpine:latest  
 
-COPY --from=builder /app /home/demo/app
-WORKDIR /home/demo/app
+WORKDIR /app
 
+COPY --from=builder /app/main /app/main
+COPY assets/ ./assets/
+COPY resources/ ./resources/
 
 EXPOSE 2560
-CMD ["./appbin"]
+CMD ["./main"]

@@ -47,6 +47,7 @@
         />
         <meta name="theme-color" content="#ffffff" />
         <!-- Normalize -->
+        <link rel="stylesheet" type="text/css" href="assets/css/app.css" />
         <link rel="stylesheet" type="text/css" href="assets/css/normalize.css" />
         <!-- Bootstrap -->
         <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css" />
@@ -166,31 +167,40 @@
         </section>
         <section id="pricing" class="section">
             <div class="container">
-                <div class="row title text-center">
-                    <h2 class="margin-top white">{{ .NavigationInfo.Pricing }}</h2>
-                </div>
-                <div class="row no-margin">
-                    <div
-                        class="col-md-7 no-padding col-md-offset-5 pricings text-center"
-                    >
-                        {{ range $cource := .Courses }}
-                        <div class="pricing">
-                            <div
-                                class="box-main active"
-                                data-img="assets/images/wallpaper1.jpg"
-                            >
-                                <h4 class="white">{{ $cource.Header }}</h4>
-                                <h4 class="white">{{ $cource.Description }}</h4>
-                                <h4 class="white regular light">
-                                    {{ $cource.Pricing  }}
-                                    <span class="small-font"></span>
-                                </h4>
+                <section class="plans__container">
+                    <div class="plans">
+                        <div class="plansHero">
+                            <h1 class="plansHero__title">{{ .NavigationInfo.Pricing }}</h1>
+                        </div>
+                        <div class="planItem__container">
+                            <!--free plan starts -->
+                            {{ range $course := .Courses }}
+                            <div class="planItem planItem--free">
+
+                                <div class="card">
+                                    <div class="card__header">
+                                        <h2> {{ $course.Header }}</h2>
+                                    </div>
+                                    <div class="card__desc"> {{ $course.Description }}</div>
+                                </div>
+
+                                <div class="price">{{ $course.Pricing }}<span></span></div>
+
+                                <ul class="featureList">
+                                    {{ range $element := $course.AvailableOptions }}
+                                    <li>{{ $element}}</li>
+                                    {{ end }}
+<!--                                    <li class="disabled">Chat support</li>-->
+                                </ul>
 
                             </div>
+                            <!--free plan ends -->
+                            {{ end }}
+
+
                         </div>
-                        {{ end }}
                     </div>
-                </div>
+                </section>
             </div>
         </section>
         <section class="section section-padded blue-bg">
@@ -200,7 +210,7 @@
                         <div class="owl-twitter owl-carousel">
                             {{ range $cource := .Courses }}
                             <div class="item text-center">
-                                <i class="icon fa fa-twitter"></i>
+                                <i class="icon fa fa-book"></i>
                                 <h4 class="white light">
                                     {{ $cource.Header }}
                                 </h4>

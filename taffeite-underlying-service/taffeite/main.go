@@ -1,13 +1,37 @@
 package main
 
+/* import (
+	"errors"
+	"fmt"
+	"log"
+)*/
+
 import (
+	"html/template"
+
 	"github.com/gin-gonic/gin"
 	"golang.org/x/net/context"
-	"html/template"
 	"taffeite.com/taffeite-underlying-service/access"
 	"taffeite.com/taffeite-underlying-service/conf"
 	"taffeite.com/taffeite-underlying-service/services"
 )
+
+/*func Hello(name string) (string, error) {
+	// Return a greeting that embeds the name in a message.
+	if name == "" {
+		return "", errors.New("empty name")
+	}
+	message := fmt.Sprintf("Hello, %v. Welcome!", name)
+	return message, nil
+}
+
+func main() {
+	helloMessage, err := Hello("")
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println(helloMessage)
+}*/
 
 func main() {
 	// Create a new Gin router

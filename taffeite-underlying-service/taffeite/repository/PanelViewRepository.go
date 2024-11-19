@@ -21,7 +21,7 @@ func NewPanelViewRepository(Conf conf.MongoConf) *PanelViewRepository {
 func (r *PanelViewRepository) GetPanelViewData() entity.PanelViewData {
 	var client = r.Conf.MongoClient
 	collection := client.Database("taffeite").Collection("panel-view-data")
-	var filter = bson.M{"version": 2}
+	var filter = bson.M{"version": 3}
 	result := collection.FindOne(context.Background(), filter)
 
 	var panelView = entity.PanelViewData{}

@@ -15,9 +15,10 @@ func mapDataToDto(source entity.TrainingDescriptionData) dto.TrainingDescription
 
 func mapCourseDataToDto(source entity.TrainingCourseData) dto.TrainingCourseDto {
 	return dto.TrainingCourseDto{
-		Header:      source.Header,
-		Description: source.Description,
-		Pricing:     source.Pricing,
+		Header:           source.Header,
+		Description:      source.Description,
+		AvailableOptions: source.AvailableOptions,
+		Pricing:          source.Pricing,
 	}
 }
 
